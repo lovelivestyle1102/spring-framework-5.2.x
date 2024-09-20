@@ -578,6 +578,7 @@ class ConfigurationClassParser {
 							exclusionFilter = exclusionFilter.or(selectorFilter);
 						}
 						if (selector instanceof DeferredImportSelector) {
+							//延迟处理
 							this.deferredImportSelectorHandler.handle(configClass, (DeferredImportSelector) selector);
 						} else {
 							String[] importClassNames = selector.selectImports(currentSourceClass.getMetadata());
@@ -598,6 +599,7 @@ class ConfigurationClassParser {
 						// process it as an @Configuration class
 						this.importStack.registerImport(
 								currentSourceClass.getMetadata(), candidate.getMetadata().getClassName());
+
 						processConfigurationClass(candidate.asConfigClass(configClass), exclusionFilter);
 					}
 				}

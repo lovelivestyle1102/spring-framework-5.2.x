@@ -140,6 +140,7 @@ class ConfigurationClassBeanDefinitionReader {
 		if (configClass.isImported()) {
 			registerBeanDefinitionForImportedConfigurationClass(configClass);
 		}
+
 		// 这里它会把我们加了 @Bean 的方法解析为 BeanDefinition 从而变成和 @Component 等注解标注的类一样
 		for (BeanMethod beanMethod : configClass.getBeanMethods()) {
 			loadBeanDefinitionsForBeanMethod(beanMethod);
@@ -197,6 +198,7 @@ class ConfigurationClassBeanDefinitionReader {
 			return;
 		}
 
+		//获取Bean配置信息
 		AnnotationAttributes bean = AnnotationConfigUtils.attributesFor(metadata, Bean.class);
 		Assert.state(bean != null, "No @Bean annotation attributes");
 

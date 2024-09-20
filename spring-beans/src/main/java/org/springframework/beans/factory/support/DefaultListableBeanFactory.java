@@ -867,6 +867,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		// getBean 方法其实就是 我们外面显式的调用 beanFactory.getBean() 是一样的，只不过这里会把步骤提前
 		// Trigger initialization of all non-lazy singleton beans...
 		for (String beanName : beanNames) {
+
 			RootBeanDefinition bd = getMergedLocalBeanDefinition(beanName);
 			if (!bd.isAbstract() && bd.isSingleton() && !bd.isLazyInit()) {
 				// 判断是否通过 FactoryBean 生成的 Bean （一般不是）

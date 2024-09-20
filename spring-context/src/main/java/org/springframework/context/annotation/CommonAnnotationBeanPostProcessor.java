@@ -203,12 +203,15 @@ public class CommonAnnotationBeanPostProcessor extends InitDestroyAnnotationBean
 	 */
 	public CommonAnnotationBeanPostProcessor() {
 		setOrder(Ordered.LOWEST_PRECEDENCE - 3);
+
 		/**
 		 * 设置初始化注解（这个方法参数其实是 {@link Annotation} 类型，所以支持我们自定义注解）
 		 */
 		setInitAnnotationType(PostConstruct.class);
+
 		// 设置销毁注解
 		setDestroyAnnotationType(PreDestroy.class);
+
 		ignoreResourceType("javax.xml.ws.WebServiceContext");
 	}
 

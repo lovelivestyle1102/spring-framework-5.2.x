@@ -171,6 +171,7 @@ public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBean
 	@SuppressWarnings("unchecked")
 	public AutowiredAnnotationBeanPostProcessor() {
 		this.autowiredAnnotationTypes.add(Autowired.class);
+
 		this.autowiredAnnotationTypes.add(Value.class);
 		try {
 			this.autowiredAnnotationTypes.add((Class<? extends Annotation>)

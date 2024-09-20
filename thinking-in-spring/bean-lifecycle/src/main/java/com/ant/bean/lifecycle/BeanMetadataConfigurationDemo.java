@@ -33,6 +33,7 @@ public class BeanMetadataConfigurationDemo {
 		System.out.printf("共加载了 %d 条 BeanDefinition %n", num);
 
 		User user = beanFactory.getBean("user", User.class);
+
 		System.out.println(user);
 
 	}

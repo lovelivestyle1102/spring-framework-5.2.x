@@ -1,6 +1,7 @@
 package com.ant.validation;
 
 import com.ant.spring.ioc.overview.domain.User;
+import org.springframework.core.ResolvableType;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
@@ -23,5 +24,8 @@ public class JavaBeansDemo {
 				.forEach(propertyDescriptor -> {
 					System.out.println(propertyDescriptor);
 		});
+
+		ResolvableType resolvableType = ResolvableType.forClass(User.class);
+//		resolvableType.
 	}
 }

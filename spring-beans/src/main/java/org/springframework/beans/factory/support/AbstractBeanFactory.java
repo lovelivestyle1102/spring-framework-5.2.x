@@ -306,6 +306,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 				// 合并BeanDefinition (如果有继承父类的 Bean 会继承父类属性值)
 				// 实际上到这一步就完成了我们 Bean 生命周期的 BeanDefinition 合并阶段
 				final RootBeanDefinition mbd = getMergedLocalBeanDefinition(beanName);
+
 				checkMergedBeanDefinition(mbd, beanName, args);
 
 				// Guarantee initialization of beans that the current bean depends on.
@@ -1783,6 +1784,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	protected Object getObjectForBeanInstance(
 			Object beanInstance, String name, String beanName, @Nullable RootBeanDefinition mbd) {
 
+		//如果是获取工厂类本身
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
 			if (beanInstance instanceof NullBean) {
@@ -1797,6 +1799,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			return beanInstance;
 		}
 
+		//非FactoryBean直接返回
 		// Now we have the bean instance, which may be a normal bean or a FactoryBean.
 		// If it's a FactoryBean, we use it to create a bean instance, unless the
 		// caller actually wants a reference to the factory.
@@ -1804,6 +1807,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			return beanInstance;
 		}
 
+		//类行为FactoryBean情况
 		Object object = null;
 		if (mbd != null) {
 			mbd.isFactoryBean = true;

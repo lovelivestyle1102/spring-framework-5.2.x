@@ -15,7 +15,8 @@ import org.springframework.context.annotation.DependsOn;
  * @author Ant
  * @since 2022/11/04 8:46 下午
  **/
-@Configuration(proxyBeanMethods = false)
+//@Configuration(proxyBeanMethods = false)
+@Configuration
 public class AppConfig {
 
 	@Bean
